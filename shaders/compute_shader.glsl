@@ -1,6 +1,6 @@
 // Compute shader
 #version 430
-layout (local_size_x = 12) in; // Define the number of threads in a workgroup
+layout (local_size_x = 1024) in; // Define the number of threads in a workgroup
 
 struct Particle {
     vec2 pos;

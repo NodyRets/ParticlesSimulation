@@ -3,7 +3,7 @@ in vec4 fragColor;
 out vec4 fragment;
 
 void main() {
-        vec2 center = vec2(0.5, 0.5);
+	vec2 center = vec2(0.5, 0.5);
     float radius = 0.5;
     float dist = distance(gl_PointCoord, center);
     if (dist > radius) {

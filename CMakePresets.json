@@ -10,7 +10,7 @@
           "cacheVariables": {
             "CMAKE_C_COMPILER": "cl.exe",
             "CMAKE_CXX_COMPILER": "cl.exe",
-            "CMAKE_TOOLCHAIN_FILE": "C:/Users/Wiktor/scoop/apps/vcpkg/current/scripts/buildsystems/vcpkg.cmake",
+            "CMAKE_TOOLCHAIN_FILE": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
           },
             "condition": {
                 "type": "equals",
@@ -35,7 +35,7 @@
             "displayName": "x64 Release",
             "inherits": "x64-debug",
             "cacheVariables": {
-              "CMAKE_BUILD_TYPE": "Release",
+              "CMAKE_BUILD_TYPE": "Release"
           }
         },
         {

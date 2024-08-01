@@ -155,7 +155,7 @@ void ParticlesRenderer::calculateFrame(const ParticleFrameData& frameData)
 	glUniform1f(glGetUniformLocation(m_computeProgramIdx, "repulsionStrength"), 0.1f);
 	glUniform1i(glGetUniformLocation(m_computeProgramIdx, "activeCount"), frameData.activeParticles);
 
-	int workGroupSize = 12; 
+	int workGroupSize = 1024; 
 	glDispatchCompute((frameData.activeParticles + workGroupSize - 1) / workGroupSize, 1, 1);
 	glMemoryBarrier(GL_SHADER_STORAGE_BARRIER_BIT);
 
