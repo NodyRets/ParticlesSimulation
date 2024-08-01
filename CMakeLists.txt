@@ -24,7 +24,13 @@ target_include_directories(ParticlesSimulation PRIVATE ${PROJECT_SOURCE_DIR}/src
 target_link_libraries(ParticlesSimulation PRIVATE glm::glm glfw glad spdlog::spdlog imgui::imgui)
 
 set(SHADER_SOURCE_DIR "${CMAKE_SOURCE_DIR}/shaders")
-set(SHADER_DEST_DIR "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/shaders")
+set(SHADER_DEST_DIR "${CMAKE_BINARY_DIR}/shaders")
+
+add_custom_command(
+    TARGET ParticlesSimulation POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${SHADER_SOURCE_DIR} ${SHADER_DEST_DIR}
+    COMMENT "Copying SHADERS to build directory"
+)
 
 enable_testing()
 add_subdirectory(tests)

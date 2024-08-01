@@ -19,14 +19,14 @@ bool ParticlesRenderer::initializeShaders()
 	std::string fragmentShaderSource;
 
 	//TODO read from conf file
-	std::string fragmentShaderFilePath = "C:/Users/Wiktor/projects/ParticlesSimulation/shaders/fragment_shader.glsl";
+	std::string fragmentShaderFilePath = "shaders/fragment_shader.glsl";
 	if (!FileUtils::readFileToString(fragmentShaderFilePath, fragmentShaderSource))
 	{
 		return false;
 	}
 
 	std::string vertexShaderSource;
-	std::string vertexShaderFilePath = "C:/Users/Wiktor/projects/ParticlesSimulation/shaders/vertex_shader.glsl";
+	std::string vertexShaderFilePath = "shaders/vertex_shader.glsl";
 	if (!FileUtils::readFileToString(vertexShaderFilePath, vertexShaderSource))
 	{
 		return false;
@@ -47,7 +47,7 @@ bool ParticlesRenderer::initializeShaders()
 	}
 
 	std::string computeShaderSource;
-	std::string computeShaderFilePath = "C:/Users/Wiktor/projects/ParticlesSimulation/shaders/compute_shader.glsl";
+	std::string computeShaderFilePath = "shaders/compute_shader.glsl";
 	if (!FileUtils::readFileToString(computeShaderFilePath, computeShaderSource))
 	{
 		return false;

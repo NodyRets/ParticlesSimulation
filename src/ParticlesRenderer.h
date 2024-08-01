@@ -8,7 +8,7 @@ class ParticlesRenderer
 {
 public:
 
-	static constexpr auto MAX_NUMBER_OF_PARTICLES = 50000000;
+	static constexpr auto MAX_NUMBER_OF_PARTICLES = 500000;
 
 	ParticlesRenderer();
 	~ParticlesRenderer();
