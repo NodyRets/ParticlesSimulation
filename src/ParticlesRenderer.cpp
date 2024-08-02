@@ -18,7 +18,6 @@ bool ParticlesRenderer::initializeShaders()
 
 	std::string fragmentShaderSource;
 
-	//TODO read from conf file
 	std::string fragmentShaderFilePath = "shaders/fragment_shader.glsl";
 	if (!FileUtils::readFileToString(fragmentShaderFilePath, fragmentShaderSource))
 	{
@@ -68,9 +67,8 @@ bool ParticlesRenderer::initializeShaders()
 
 void ParticlesRenderer::initializeParticles()
 {
-	m_particles.reserve(MAX_NUMBER_OF_PARTICLES);
-	for (auto i = 0; i < MAX_NUMBER_OF_PARTICLES; i++) {
-		Particle particle;
+	m_particles.resize(MAX_NUMBER_OF_PARTICLES);
+	for (auto& particle : m_particles) {
 		particle.pos[0] = ((float)rand() / RAND_MAX) * 2.0f - 1.0f;
 		particle.pos[1] = ((float)rand() / RAND_MAX) * 2.0f - 1.0f;
 		particle.velocity[0] = 0.0f;
@@ -79,17 +77,8 @@ void ParticlesRenderer::initializeParticles()
 		particle.color[1] = 0.0f;
 		particle.color[2] = 0.0f;
 		particle.color[3] = 0.0f; // Alpha
-		m_particles.push_back(particle);
 	}
 }
-
-void GLAPIENTRY MessageCallback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar* message, const void* userParam) {
-	std::cerr << "GL CALLBACK: " << (type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : "")
-		<< " type = " << type
-		<< ", severity = " << severity
-		<< ", message = " << message << "\n";
-}
-
 
 void ParticlesRenderer::initializeGraphicsResources()
 {
@@ -103,13 +92,6 @@ void ParticlesRenderer::initializeGraphicsResources()
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, sizeof(Particle), (void*)(offsetof(Particle, color)));
 	glEnableVertexAttribArray(1);
-	//glPointSize(2.0f); // Set the point size to 10 pixels
-
-	//glEnable(GL_DEBUG_OUTPUT);
-	////glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
-	//glDebugMessageCallback(MessageCallback, 0);
-	//glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, NULL, GL_TRUE);
-
 }
 
 bool ParticlesRenderer::initialize()
